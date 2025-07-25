@@ -8,7 +8,7 @@ import React, {
 // Create a context with initial value null
 // eslint-disable-next-line react-refresh/only-export-components
 export const Socket = createContext<WebSocket | null>(
-  new WebSocket("ws://localhost:8080")
+  new WebSocket("wss://video-call-app-lzus.onrender.com")
 );
 
 // Define props type for the context provider
@@ -20,7 +20,7 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
   const [ws, setWs] = useState<WebSocket | null>(null);
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080");
+    const socket = new WebSocket("wss://video-call-app-lzus.onrender.com");
 
     setWs(socket);
 
