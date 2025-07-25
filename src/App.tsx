@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import peerObj from "./Webrtc/peer";
 import { Socket } from "./context/context";
 
@@ -7,7 +7,7 @@ function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const remoteVideo = useRef<HTMLVideoElement>(null);
   const socket = useContext(Socket);
-  const [message, setMessage] = useState("");
+
   const peer = useRef(peerObj);
 
   useEffect(() => {
