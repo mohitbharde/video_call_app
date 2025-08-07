@@ -42,7 +42,7 @@ function App() {
     peer.current.peer?.addEventListener("icecandidate", (event) => {
       if (event.candidate) {
         socket?.send(JSON.stringify(event.candidate));
-        console.log("inside icecandidate ",event.candidate);
+        console.log("inside icecandidate who create offer ",event.candidate);
       }
     });
 
@@ -67,7 +67,7 @@ function App() {
           peer.current.peer?.addEventListener("icecandidate", (event) => {
             if (event.candidate) {
               socket?.send(JSON.stringify(event.candidate));
-              console.log("inside icecandidate ",event.candidate);
+              console.log("inside icecandidate who accept the offer",event.candidate);
             }
           });
           socket?.send(JSON.stringify(answer));
@@ -87,7 +87,7 @@ function App() {
       if (data.candidate) {
         async function addCandidate() {
           await peer.current.peer?.addIceCandidate(data);
-          console.log("adding the candidate inside addCandidate");
+          console.log("adding the candidate inside addCandidate : ",data);
         }
         addCandidate();
       }
