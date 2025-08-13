@@ -3,11 +3,13 @@ import "./index.css";
 import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { SocketProvider } from "./context/context.tsx";
+import { ToastContainer } from "react-toastify";
 
 createRoot(document.getElementById("root")!).render(
-  <SocketProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <SocketProvider>
       <App />
-    </BrowserRouter>
-  </SocketProvider>
+      <ToastContainer />
+    </SocketProvider>
+  </BrowserRouter>
 );
