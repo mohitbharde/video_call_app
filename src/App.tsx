@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import VideoCall from "./components/videoCall";
+import VideoCall from "./components/VideoCall";
 import HomePage from "./components/HomePage";
 
 function App() {
