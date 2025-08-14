@@ -15,11 +15,12 @@ export default function CopyClickBoard() {
 
     try {
       await navigator.clipboard.writeText(roomId);
-      toast.success("copied room id to click board ");
+      toast.success("copied room id to click board : ");
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy: ", err);
+      console.log("value of copied : ", copied);
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, type ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import { Socket, type SocketContextType } from "./socketContext";
+import { Socket } from "./socketContext";
 import { toast } from "react-toastify";
 
 interface SocketProviderProps {
@@ -154,12 +154,16 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
     };
   }, []);
 
-  const value: SocketContextType = {
-    ws,
-    peer,
-    shutdown,
-    setShutdown,
-  };
-
-  return <Socket.Provider value={value}>{children}</Socket.Provider>;
+  return (
+    <Socket.Provider
+      value={{
+        ws,
+        peer,
+        shutdown,
+        setShutdown,
+      }}
+    >
+      {children}
+    </Socket.Provider>
+  );
 };

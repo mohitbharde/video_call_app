@@ -5,13 +5,16 @@ import { toast } from "react-toastify";
 
 function HomePage() {
   const [roomIdInput, setRoomIdInput] = useState("");
-  const { ws } = useContext(Socket);
-
+  const socketContext = useContext(Socket);
+  if (!socketContext) {
+    throw new Error("Socket context is not available");
+  }
+  const { ws } = socketContext;
   const createRoom = () => {
     const newRoomId = uuidv4();
     toast.success(`Room created with ID: ${newRoomId}`);
     // You can also setRoomIdInput(newRoomId); if you want to auto-fill it
-    ws.send(
+    ws?.send(
       JSON.stringify({
         type: "create",
         roomId: newRoomId,
@@ -25,7 +28,7 @@ function HomePage() {
       return;
     }
     toast.success(`Joining room with ID: ${roomIdInput}`);
-    ws.send(
+    ws?.send(
       JSON.stringify({
         type: "join",
         roomId: roomIdInput.trim(),

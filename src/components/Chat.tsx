@@ -8,8 +8,17 @@ type chatProp = {
   msg: string;
 };
 
-export default function Chat({ isopen, setIsOpen }) {
-  const { peer } = useContext(Socket);
+interface ChatProps {
+  isopen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Chat: React.FC<ChatProps> = ({ isopen, setIsOpen }) => {
+  const socketContext = useContext(Socket);
+  if (!socketContext) {
+    throw new Error("Socket context is not available");
+  }
+  const { peer } = socketContext;
   const [chat, setChat] = useState<chatProp[]>([]);
   const [msg, setMsg] = useState("");
   const dataChannel = useRef<RTCDataChannel | null>(null);
@@ -142,4 +151,6 @@ export default function Chat({ isopen, setIsOpen }) {
       </div>
     </div>
   );
-}
+};
+
+export default Chat;
