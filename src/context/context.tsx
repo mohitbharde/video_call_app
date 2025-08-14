@@ -31,7 +31,7 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
   let remoteDescSet = false;
 
   useEffect(() => {
-    const socket = new WebSocket("ws://localhost:8080");
+    const socket = new WebSocket("wss://video-call-app-lzus.onrender.com");
 
     setWs(socket);
     if (peer) {
