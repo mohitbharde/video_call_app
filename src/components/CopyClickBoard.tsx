@@ -2,6 +2,11 @@ import { useState } from "react";
 import { Copy } from "lucide-react"; // icon library (npm install lucide-react)
 import { Button } from "./ui/button";
 import { toast } from "react-toastify";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function CopyClickBoard() {
   const [copied, setCopied] = useState(false);
@@ -26,9 +31,16 @@ export default function CopyClickBoard() {
 
   return (
     <div className="absolute left-1 bottom-8 md:left-3">
-      <Button onClick={handleCopy} size={"icon"} variant={"secondary"}>
-        <Copy size={18} />
-      </Button>
+      <Tooltip>
+        <TooltipTrigger>
+          <Button onClick={handleCopy} size={"icon"} variant={"secondary"}>
+            <Copy size={18} />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Copy roomId</p>
+        </TooltipContent>
+      </Tooltip>
     </div>
   );
 }

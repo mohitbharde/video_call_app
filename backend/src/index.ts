@@ -54,7 +54,7 @@ wss.on("connection", (ws) => {
             })
           );
         });
-      }, 4000);
+      }, 2000);
     }
 
     if (type == "offer") {
