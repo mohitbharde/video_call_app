@@ -40,7 +40,7 @@ function HomePage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4 my-12 bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen gap-4 my-12 ">
       <div className="w-full md:w-1/2 h-full flex flex-col items-center justify-center gap-4">
         <div className="max-w-5xl text-center text-wrap">
           <div className="text-5xl text-center mb-3.5">
